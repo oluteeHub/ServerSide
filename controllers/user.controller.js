@@ -157,9 +157,7 @@ exports.uploadKYC = async (req, res) => {
 				.status(400)
 				.json({ message: "Invalid document type" });
 
-		const fileUrl = `${req.protocol}://${req.get(
-			"host"
-		)}/uploads/documents/${req.file.filename}`;
+		const fileUrl = req.file.path;
 
 		const user = await User.findById(userId);
 		user.documents.push({
